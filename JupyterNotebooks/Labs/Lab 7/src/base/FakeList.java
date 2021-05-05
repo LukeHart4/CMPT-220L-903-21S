@@ -5,16 +5,22 @@ public class FakeList {
     Node tail;
 
     // Constructor
-    public FakeList (Node node) {
-        this.head = node;
-        this.tail = node;
+    public FakeList () {
+        this.head = null;
+        this.tail = null;
     }
 
     // Add Method
     // Adds new node ot the end
     public void addNode(Node newNode) {
-        this.tail.next = newNode;
-        this.tail = newNode;
+        if (this.head == null) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
     }
 
     // Remove Method
@@ -43,7 +49,10 @@ public class FakeList {
 
         if (found) {
             if (current.next == null) { // if tail, remove and reassign
+                previous.next = null;
                 this.tail = previous;
+                return current;
+
             }
             previous.next = current.next;
             return current;
