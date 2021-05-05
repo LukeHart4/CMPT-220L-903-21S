@@ -8,28 +8,18 @@ public class Main {
         Node three = new Node("King K. Rool");
         Node four = new Node("Lucina");
 
-        // one.next = two;
-        addNode(one, two);
-        // two.next = three;
-        addNode(two, three);
-        // three.next = four;
-        addNode(three, four);
+        FakeList list = new FakeList(one);
 
-        printList(one);
+        list.addNode(two);
+        list.addNode(three);
+        list.addNode(four);
 
-    }
+        System.out.println("\nDisplaying Original List:\n");
+        list.displayList();
 
-    public static void printList(Node start) {
-        for (Node current = start; current != null; current = current.next) {
-            System.out.println(current.value);
-        }
-    }
+        list.removeNode(four);
 
-    public static void addNode(Node previous, Node newNode) {
-        previous.next = newNode;
-    }
-
-    public static void remove(Node node) {
-
+        System.out.println("\nDisplaying Modified List:\n");
+        list.displayList();
     }
 }
