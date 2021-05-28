@@ -3,19 +3,18 @@ package base;
 public class Main {
 
     public static void main(String[] args) {
+    	// construct a tree
 	    BST tree = new BST();
+	    // construct root node
 	    Node root = new Node(50);
 
-	    //root = tree.insertNode(root, 50);
-
+		// populate tree
 	    tree.insertNode(root, 30);
 		tree.insertNode(root, 20);
 		tree.insertNode(root, 40);
 		tree.insertNode(root, 70);
 		tree.insertNode(root, 60);
 		tree.insertNode(root, 80);
-
-		Node target = tree.find(root, 40);
 
 
 		System.out.println("\nPre Order:");
@@ -31,6 +30,8 @@ public class Main {
 		System.out.println("\nDeleting 70 from the bst:");
 		tree.deleteNode(root, 70);
 		tree.inOrder(root);
+
+		Node target = tree.find(root, 40);
 
 		System.out.println("\nSearching for 40: " + target.value);
 		System.out.println("\nHeight of the tree is: " + tree.getHeight(root));
