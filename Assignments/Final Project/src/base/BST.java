@@ -21,7 +21,7 @@ public class BST {
         // keep track of current node's parent
         Node parent = null;
 
-        // traverse tree
+        // traverse tree to figure out where to insert the new node
         while (current != null) {
             // update parent
             parent = current;
@@ -35,8 +35,9 @@ public class BST {
                 current = current.rightChild;
             }
         }
-        // tree is empty
+        // if tree is empty i.e new node does not have a parent
         if (parent == null) {
+            // assign new node as root
             parent = newNode;
         }
         else if (value < parent.value) {
@@ -90,7 +91,7 @@ public class BST {
 
     // Method to recursively search for a given node
     public Node find(Node root, int target) {
-        // root is the target or the tree is empty
+        // if the root is the target node or the tree is empty
         if (root == null || root.value == target)
             return root;
         // target is smaller, so check the left
@@ -162,7 +163,7 @@ public class BST {
 
         // construct array list
         ArrayList<Integer> values = new ArrayList<>();
-        // populate array list using helper method (descending order)
+        // populate array list using helper method (ascending order)
         putInOrder(root, values);
         // keep track of count
         int count = 1;
@@ -184,12 +185,11 @@ public class BST {
         // current node pointer
         Node current = root;
 
-        // while not null and we haven't found desired node:
+        // while current node is not null and we haven't found desired node:
         // compare target, traverse bst
         while (current != null && current.value != target) {
             // update parent
             parent = current;
-
 
             // if target less than, go left
             if (target < current.value)
